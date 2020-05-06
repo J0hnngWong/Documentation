@@ -22,6 +22,8 @@
 		786BCF10244F157C0072A33D /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786BCF0F244F157C0072A33D /* DebugViewController.swift */; };
 		786BCF12244F15880072A33D /* DebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 786BCF11244F15880072A33D /* DebugViewController.xib */; };
 		786BCF15244F1B1D0072A33D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 786BCF14244F1B1D0072A33D /* libsqlite3.0.tbd */; };
+		786BCF1B244FDB3C0072A33D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786BCF1A244FDB3C0072A33D /* DatabaseManager.swift */; };
+		78A75CBC2462B37B0084E2A8 /* JournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A75CBB2462B37B0084E2A8 /* JournalModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		786BCF11244F15880072A33D /* DebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugViewController.xib; sourceTree = "<group>"; };
 		786BCF14244F1B1D0072A33D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		786BCF16244F1B390072A33D /* Journal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Journal-Bridging-Header.h"; sourceTree = "<group>"; };
+		786BCF1A244FDB3C0072A33D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		78A75CBB2462B37B0084E2A8 /* JournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,8 @@
 				786BCF0F244F157C0072A33D /* DebugViewController.swift */,
 				786BCF11244F15880072A33D /* DebugViewController.xib */,
 				786BCF16244F1B390072A33D /* Journal-Bridging-Header.h */,
+				786BCF1A244FDB3C0072A33D /* DatabaseManager.swift */,
+				78A75CBB2462B37B0084E2A8 /* JournalModel.swift */,
 			);
 			path = Journal;
 			sourceTree = "<group>";
@@ -294,6 +300,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78A75CBC2462B37B0084E2A8 /* JournalModel.swift in Sources */,
+				786BCF1B244FDB3C0072A33D /* DatabaseManager.swift in Sources */,
 				786BCEDB244F0FE10072A33D /* ViewController.swift in Sources */,
 				786BCF10244F157C0072A33D /* DebugViewController.swift in Sources */,
 				786BCF0A244F13570072A33D /* MainJournalListViewController.swift in Sources */,
@@ -476,7 +484,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Journal/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -497,7 +505,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Journal/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
