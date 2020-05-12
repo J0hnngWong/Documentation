@@ -35,12 +35,12 @@ class DatabaseManager {
     }
     
     func createTable(tableName: String, parameterList: [String:Any]) -> Bool {
-        let sql = "CREATE TABLE IF NOT EXISTS '\(tableName)' ('id' text NOT NULL PRIMARY KEY, 'title' text, 'detail' text, 'image_name' text, 'create_date' date, 'last_update_date' date);"
+        let sql = "CREATE TABLE IF NOT EXISTS '\(tableName)' ('id' text NOT NULL PRIMARY KEY, 'title' text, 'detail' text, 'image_name' text, 'create_date' double, 'last_update_date' date);"
         return execSql(sql)
     }
     
     func InsertData(model: JournalModel) -> Bool {
-        let sql = "INSERT INTO '\(tableName)' VALUES ('\(model.id)', '\(model.title)', '\(model.detail)', '\(model.imageName)', '\(model.createDate)', '\(model.lastUpdateDate)')"
+        let sql = "INSERT INTO '\(tableName)' ('id', 'title', 'detail', 'image_name', 'create_date', 'last_update_date') VALUES ('\(model.id)', '\(model.title)', '\(model.detail)', '\(model.imageName)', '\(model.createDate.timeIntervalSince1970)', '\(model.lastUpdateDate.timeIntervalSince1970)')"
         return execSql(sql)
     }
     
@@ -52,5 +52,31 @@ class DatabaseManager {
     func updateData(model: JournalModel) -> Bool {
         let sql = "UPDATE '\(tableName)' set title='\(model.title)', detail='\(model.detail)', image_name='\(model.imageName)', create_date='\(model.createDate)', last_update_date='\(model.lastUpdateDate)' WHERE id='\(model.id)'"
         return execSql(sql)
+    }
+    
+    func queryData(id: UUID) -> Array<JournalModel>? {
+        var resultArray: [JournalModel] = []
+        var stmt: OpaquePointer? = nil
+        let cSql = "".cString(using: .utf8)
+        
+        if sqlite3_prepare(dbPointer, cSql, -1, &stmt, nil) != SQLITE_OK {
+            print("error in prepare")
+            return nil
+        }
+        
+        while sqlite3_step(stmt) == SQLITE_ROW {
+            let model = JournalModel()
+            
+            model.id = UUID(uuidString: String(cString: sqlite3_column_text(stmt, 0))) ?? UUID()
+            model.title = String(cString: sqlite3_column_text(stmt, 1))
+            model.detail = String(cString: sqlite3_column_text(stmt, 2))
+            model.imageName = String(cString: sqlite3_column_text(stmt, 3))
+            model.createDate = Date(timeIntervalSince1970: sqlite3_column_double(stmt, 4))
+            model.lastUpdateDate = Date(timeIntervalSince1970: sqlite3_column_double(stmt, 5))
+            
+            resultArray.append(model)
+        }
+        
+        return resultArray
     }
 }
