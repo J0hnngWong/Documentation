@@ -54,14 +54,18 @@ class DatabaseManager {
         return execSql(sql)
     }
     
-    func queryData(id: UUID) -> Array<JournalModel>? {
+    func queryData(id: UUID? = nil) -> Array<JournalModel> {
         var resultArray: [JournalModel] = []
         var stmt: OpaquePointer? = nil
-        let cSql = "".cString(using: .utf8)
+        // don't search like 'id','title'...
+        var cSql = "SELECT id,title,detail,image_name,create_date,last_update_date FROM 'userData';".cString(using: .utf8)
+        if let idTmp = id {
+            cSql = "SELECT id,title,detail,image_name,create_date,last_update_date FROM 'userData' WHERE id='\(idTmp)';".cString(using: .utf8)
+        }
         
         if sqlite3_prepare(dbPointer, cSql, -1, &stmt, nil) != SQLITE_OK {
             print("error in prepare")
-            return nil
+            return []
         }
         
         while sqlite3_step(stmt) == SQLITE_ROW {
