@@ -6,5 +6,7 @@ target 'Journal' do
   # use_frameworks!
 
   pod 'SnapKit'
+  pod 'RxCocoa'
+  pod 'RxSwift'
 
 end
