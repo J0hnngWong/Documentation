@@ -1,2 +1,1 @@
-# Journal
-iOS application for record
+# Documentations
