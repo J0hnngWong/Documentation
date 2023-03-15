@@ -1,10 +1,10 @@
-#Apple Techonlogies
+# Apple Techonlogies
 
-##Reference
+## Reference
 Based on documents on apple developer website
 [Apple Techologies](https://developer.apple.com/documentation/technologies)
 
-##Technologies
+## Technologies
 
 * [Spatial](https://developer.apple.com/documentation/spatial)
 	* 数学上的空间计算
